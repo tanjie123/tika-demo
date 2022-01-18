@@ -4,6 +4,7 @@ import org.apache.tika.Tika;
 import org.apache.tika.exception.TikaException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.util.ResourceUtils;
 
 import java.io.*;
 
@@ -14,10 +15,13 @@ public class TikaDemoApplication {
         SpringApplication.run(TikaDemoApplication.class, args);
 
         Tika tika = new Tika();
-        File file = new File("D:\\tanjie\\projects\\tika-demo\\src\\main\\resources\\data\\README.pdf");
-        String content = tika.parseToString(file);
+        File readme = ResourceUtils.getFile("classpath:data/README.pdf");
+        String content = tika.parseToString(readme);
         System.out.println(content);
 
+        File template =  ResourceUtils.getFile("classpath:data/template.pptx");
+        String content1 = tika.parseToString(template);
+        System.out.println(content1);
     }
 
 }
