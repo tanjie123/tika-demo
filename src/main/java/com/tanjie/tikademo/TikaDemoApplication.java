@@ -22,6 +22,10 @@ public class TikaDemoApplication {
         File template =  ResourceUtils.getFile("classpath:data/template.pptx");
         String content1 = tika.parseToString(template);
         System.out.println(content1);
+
+        File solace = ResourceUtils.getFile("classpath:data/solaceeda2021.pdf");
+        String content2 = tika.parseToString(solace);
+        System.out.println(content2);
     }
 
 }
